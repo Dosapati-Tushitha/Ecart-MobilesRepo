@@ -1,0 +1,147 @@
+﻿@model MVC_01.Models.UserModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        body {
+            background: url(https://images.pexels.com/photos/2138922/pexels-photo-2138922.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+            
+@*background-color:lightslategray;
+*@background-size: cover;
+        }
+        .registerbox {
+            position: absolute;
+            width: 400px;
+            height: 650px;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: rgb(0,0,0,0.5);
+            color: #fff;
+            margin: 10px;
+            box-sizing: border-box;
+            border-radius: 25px;
+        }
+        h1 {
+            margin-top: 20px;
+            padding: 0 0 10px;
+            text-align: center;
+            font-size: 25px;
+            font-weight:bold;
+            color:darkred;
+        }
+        .registerbox p {
+            font-weight: bold;
+            padding: 10px;
+            margin: 0px;
+        }
+        .registerbox input {
+            width: 90%;
+            
+        }
+            .registerbox input[type="FirstName"], input[type="LastName"], input[type="text"], input[type="password"], input[type="ConfirmPassword"] {
+                border: none;
+                border-bottom: 1px solid #fff;
+                background: transparent;
+                height: 40px;
+                margin-left: 10px;
+                color: #fff;
+                font-size: 16px;
+            }
+        .registerbox input[type="submit"] {
+            border: none;
+            outline: none;
+            font-size: 18px;
+            margin-left: 20px;
+            margin-top: 20px;
+            border-radius: 25px;
+            background: orange;
+            height: 40px;
+            padding: 5px;
+            font-weight: bold;
+        }
+            .registerbox input[type="submit"]:hover {
+                background: rgb(0,0,200);
+                cursor: pointer;
+                color: #fff;
+            }
+
+        .registerbox a {
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 20px;
+            color: darkgrey;
+        }
+   .registerbox a:hover {
+         color: #ffc107;
+   }
+    </style>
+    </head>
+    <body>
+        <div class="registerbox">
+            <h1>REGISTER HERE</h1>
+            <form action="" method="POST">
+                <fieldset style="width:1000px; padding-top:40px;padding-left:55px;">
+                    <div class="row justify-content-md-left">
+                        <div class="card-title"></div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName)
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "FirstName", })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge badge-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName)
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "LastName" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "badge badge-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email)
+                            @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                            @if (ViewBag.error != null)
+                            {
+                                <span class="text-danger">@ViewBag.error</span>
+                            }
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                        </div>
+                        <div class="form-group">
+                            &nbsp; &nbsp; &nbsp;&nbsp<input type="submit" name="submit" class="btn btn-primary" value="Register" />
+                        </div>
+
+                </fieldset>
+            </form>
+
+            <div>
+                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; @Html.ActionLink("Back to Login", "Login")
+            </div>
+            <div />
+            <style>
+                .registerbox {
+                }
+            </style>
+            <br />
+            <br />
+            <br />
+            <br />
+</body>
+</html>
