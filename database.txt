@@ -1,0 +1,103 @@
+--------------------****-------------------------
+USE [akshop]
+GO
+
+/****** Object:  Table [dbo].[brand]    Script Date: 30-08-2022 12:13:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[brand](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[brand] [varchar](50) NULL,
+ CONSTRAINT [PK_brand] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+--------------------****-------------------------
+USE [akshop]
+GO
+
+/****** Object:  Table [dbo].[category]    Script Date: 30-08-2022 12:39:16 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[category](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[category] [varchar](50) NULL,
+ CONSTRAINT [PK_category] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+--------------------------****----------------------------------
+USE [akshop]
+GO
+
+/****** Object:  Table [dbo].[product]    Script Date: 30-08-2022 12:39:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[product](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[prodname] [varchar](50) NULL,
+	[cat_id] [int] NULL,
+	[brand_id] [int] NULL,
+	[qty] [int] NULL,
+	[price] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_product] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[product]  WITH CHECK ADD  CONSTRAINT [FK_product_brand] FOREIGN KEY([brand_id])
+REFERENCES [dbo].[brand] ([id])
+GO
+
+ALTER TABLE [dbo].[product] CHECK CONSTRAINT [FK_product_brand]
+GO
+
+ALTER TABLE [dbo].[product]  WITH CHECK ADD  CONSTRAINT [FK_product_category] FOREIGN KEY([cat_id])
+REFERENCES [dbo].[category] ([id])
+GO
+
+ALTER TABLE [dbo].[product] CHECK CONSTRAINT [FK_product_category]
+GO
+-----------------------------------****--------------------------------------
+USE [akshop]
+GO
+
+/****** Object:  Table [dbo].[Users1]    Script Date: 19-09-2022 12:39:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Users1](
+	[UserId] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [varchar](50) NULL,
+	[LastName] [varchar](50) NULL,
+	[Email] [varchar](220) NULL,
+	[Password] [varchar](50) NULL,
+	[ConfirmPassword] [varchar](50) NULL,
+	[CreatedOn] [date] NULL,
+ CONSTRAINT [PK_Users1] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
